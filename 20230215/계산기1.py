@@ -5,8 +5,8 @@ for tc in range(1, T+1):
     num = list(input())
     stack = []
     postfix = ''
-    # print(num)
-    # 후위표기식으로 바꾸기
+
+    # 후위 표기식으로 바꾸기
     for i in num:
         # 숫자이면
         if i.isdigit():
