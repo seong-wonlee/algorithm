@@ -32,3 +32,6 @@ def get_postfix(infix, n):
 
     return postfix
 
+n = int(input())
+lst = input()
+print(get_postfix(lst,n))
