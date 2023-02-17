@@ -1,16 +1,4 @@
-# T = int(input())
-# N = int(input())
-# arr = [list(map(int, input().split())) for _ in range(N)]
-#
-# visited = [0] * N
-#
-# def DFS(i):
-#     # 종료조건
-#     if i == N:
-#         return
-#
-#     for j in range(N):
-#         arr[i][j] =
+
 def f(i,k): # i 높이 k : N
     global minV
     if i == k:      # 순열완성
