@@ -12,7 +12,7 @@ def get_postfix(infix, n):
 
     # 문자열의 길이만큼 반복
     for i in range(n):
-        if "0" <= infix[i] <= "9":
+        if infix[i].isalpha():
             postfix += infix[i]
         else:
             if infix[i] == ")":
@@ -26,6 +26,7 @@ def get_postfix(infix, n):
                 while stack and isp[stack[-1]] >= icp[infix[i]]:
                     postfix += stack.pop()
                 # 그게 아니면 스택에 연산자 추가
+
                 stack.append(infix[i])
     while stack:    # 남아있는 연산자는 모두 출력
         postfix += stack.pop()
