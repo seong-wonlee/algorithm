@@ -2,42 +2,27 @@ T = int(input())
 for tc in range(1, T+1):
     N = int(input())
     ci = list(map(int, input().split()))
+    count = [0] * (31)
+    for i in range(N):
+        count[ci[i]] += 1
 
-    small = []
-    for i in range(N//3):
-        small.append(ci[i])
-    # print(small)
+    ans = 1000      # 당근 개수 차이 최소값 초기화
+    for i in range(1,30):
+        for j in range(i+1, 31):
+            small = sum(count[0:i+1])
+            medium = sum(count[i+1:j+1])
+            large = sum(count[j+1:31])
 
-    medium = []
-    a = (N - N//3)//2
-    for i in range(N//3, N//3+a):
-        medium.append(ci[i])
-
-
-    large = []
-    for i in range(N//3+a, N):
-        large.append(ci[i])
-    # print(large)
-
-    while medium[0] == small[-1]:
-        b = medium.pop(0)
-        small.append(b)
-        if len(medium) == 0:
-            break
-
-    while len(medium) != (N-len(small))//2:
-        a = large.pop(0)
-        medium.append(a)
-
-
-    len_lst = []
-    len_lst.append(len(small))
-    len_lst.append(len(medium))
-    len_lst.append(len(large))
-
-    if len(small) > N//2 or len(medium) > N//2 or len(large) > N//2:
+            if 0 < small <= N//2 and 0 < medium <= N//2 and  0 < large <= N//2:
+                ans = min(ans, max(small, large, medium) - min(small, large, medium))
+    if ans == 1000:
         ans = -1
-    else:
-        ans = max(len_lst) - min(len_lst)
-
     print(f'#{tc} {ans}')
+
+
+
+
+
+
+
+
