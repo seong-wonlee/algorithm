@@ -2,7 +2,6 @@ import sys
 stack = []
 def bfs(i):
     global cnt
-
     stack.append(i)
     while stack:
         a = stack.pop()
@@ -24,8 +23,9 @@ for i in range(M):
     u,v = map(int, sys.stdin.readline().split())
     lst[u].append(v)
     lst[v].append(u)
+
 for i in lst:
-    i.sort(reverse=True)
+    i.sort()
 
 bfs(R)
 for i in range(1,N+1):
