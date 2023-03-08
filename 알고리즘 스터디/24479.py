@@ -1,32 +1,27 @@
 import sys
-stack = []
-def bfs(i):
-    global cnt
+input = sys.stdin.readline
 
-    stack.append(i)
-    while stack:
-        a = stack.pop()
-        if visited[a]:
-            continue
-        cnt += 1
-        visited[a] = cnt
-        for k in lst[a]:
-            if visited[k] == 0:
-                stack.append(k)
+def dfs(i):
+    global cnt
+    visited[i] = cnt
+    for k in lst[i]:
+        if visited[k] == 0:
+            cnt += 1
+            dfs(k)
     return
 
 N, M, R = map(int, input().split())
 lst = [[] for _ in range(N+1)]
 visited = [0] * (N+1)
 
-cnt = 0
+cnt = 1
 for i in range(M):
-    u,v = map(int, sys.stdin.readline().split())
+    u,v = map(int, input().split())
     lst[u].append(v)
     lst[v].append(u)
-for i in lst:
-    i.sort(reverse=True)
+    lst[u].sort()
 
-bfs(R)
+dfs(R)
 for i in range(1,N+1):
     print(visited[i])
+
